@@ -12,13 +12,13 @@ param(
 )
 
 # Configuration
-$SOURCE_DIR = "H:\WebHatchery\apps\anime_prompt_gen"
+$SOURCE_DIR = "H:\WebHatchery\apps\wh_tracker"
 $PREVIEW_ROOT = "H:\xampp\htdocs"
 $PRODUCTION_ROOT = "F:\WebHatchery"
 
 # Set destination based on environment
 $DEST_ROOT = if ($Environment -eq 'preview') { $PREVIEW_ROOT } else { $PRODUCTION_ROOT }
-$DEST_DIR = Join-Path $DEST_ROOT "anime_prompt_gen"
+$DEST_DIR = Join-Path $DEST_ROOT "wh_tracker"
 $FRONTEND_SRC = "$SOURCE_DIR\frontend"
 $BACKEND_SRC = "$SOURCE_DIR\backend"
 $FRONTEND_DEST = $DEST_DIR  # Frontend goes to root, not subdirectory
@@ -138,10 +138,10 @@ function Build-Frontend {
     Write-Info "Building frontend for production..."
     $env:NODE_ENV = "production"
     
-    # Set base path for preview environment (anime_prompt_gen subdirectory)
+    # Set base path for preview environment (wh_tracker subdirectory)
     if ($Environment -eq 'preview') {
         Write-Info "Setting base path for preview environment..."
-        $env:VITE_BASE_PATH = "/anime_prompt_gen/"
+        $env:VITE_BASE_PATH = "/wh_tracker/"
         # Build with preview mode to use .env.preview
         npx vite build --mode preview
     } else {
@@ -422,7 +422,7 @@ DESCRIPTION:
     optimized for the target environment.
     
     Deployment Structure (for both environments):
-    <root>\anime_prompt_gen\
+    <root>\wh_tracker\
     ├── index.html          # Frontend files (root)
     ├── assets\             # Frontend assets
     └── backend\            # PHP backend
