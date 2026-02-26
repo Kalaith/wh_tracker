@@ -8,8 +8,8 @@ export interface Project {
   title: string;
   path: string;
   description: string;
-  deployment?: any;
-  repository?: any;
+  deployment?: Record<string, unknown>;
+  repository?: Record<string, unknown>;
 }
 
 export interface ProjectsData {
